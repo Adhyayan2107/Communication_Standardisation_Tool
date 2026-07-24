@@ -1,7 +1,5 @@
 # Consuma · Communication Standardisation Tool
 
-**Live:** _add your deployment URL here after hosting_
-
 A two-stage content-governance app for Consuma. It generates on-brand content (LinkedIn
 posts, outbound emails, job descriptions, website copy) strictly from a machine-readable
 **Brand Constitution**, then validates every draft with a **deterministic check registry
