@@ -245,4 +245,13 @@ export const CHECKS: Check[] = [
     severity: "warn",
     description: "Copy stays inside the target reading-grade band.",
   },
+  {
+    id: "RPT-QA",
+    label: "Report output consistency",
+    group: "channel",
+    status: "planned",
+    severity: "fail",
+    description:
+      "Enforces base-N sample size stated once and consistent across slides, category labels locked (same concept cannot appear under different names at different percentages), uniform number formatting (consistent decimal precision), and no source-context mislabelling (e.g. gaming conversations presented as brand-loyalty insight). Extends the standard from marketing copy into the product's generated reports.",
+  },
 ];

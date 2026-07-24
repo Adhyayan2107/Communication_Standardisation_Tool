@@ -202,9 +202,9 @@ describe("registry shape", () => {
       expect(c.run, `${c.id} missing run`).toBeTypeOf("function");
     }
   });
-  it("seeds the four planned checks, which never execute", () => {
+  it("seeds the five planned checks, which never execute", () => {
     const planned = CHECKS.filter((c) => c.status === "planned").map((c) => c.id).sort();
-    expect(planned).toEqual(["CH-SUBJ", "CL-7", "ID-2v", "TONE-READ"]);
+    expect(planned).toEqual(["CH-SUBJ", "CL-7", "ID-2v", "RPT-QA", "TONE-READ"]);
     const resultIds = lint("anything").map((r) => r.id);
     for (const id of planned) expect(resultIds).not.toContain(id);
   });
