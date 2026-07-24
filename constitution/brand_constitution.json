@@ -1,0 +1,99 @@
+{
+  "meta": {
+    "name": "Consuma Brand Constitution",
+    "version": "1.0",
+    "date": "2026-07-24",
+    "source": "Consuma Public Communication Audit (Adhyayan Gupta, Jul 2026), Sections 5-6",
+    "principle": "Every piece of public communication is generated from this file and validated against it. The model never decides the standard; it executes it. Any rule change requires a version bump, a source, and a date."
+  },
+  "identity": {
+    "ID-1": {
+      "rule": "Company name in all body copy is 'Consuma'. 'Consuma AI' is permitted only as a first-mention disambiguator in external press. 'Consuma.ai' is a URL, never a name in prose.",
+      "canonical": "Consuma",
+      "forbidden_in_prose": ["Consuma.ai", "consuma.ai (as a name)", "consuma_ai (outside handles)"]
+    },
+    "ID-2": {
+      "rule": "The one-line descriptor is used verbatim in bios, boilerplate, email signatures and JD intros. No paraphrases.",
+      "canonical": "Consuma is an AI-powered rapid research platform that turns a research brief into a decision-ready consumer insights report in under 30 minutes."
+    },
+    "ID-3": {
+      "rule": "Product name is 'Rapid Research Platform' on first mention; 'the platform' thereafter. 'RRP' only after expansion in the same piece. Never 'AI Engine'.",
+      "canonical": "Rapid Research Platform",
+      "forbidden": ["AI Engine", "cutting-edge AI Engine", "bare RRP without prior expansion"]
+    }
+  },
+  "claims_registry": {
+    "note": "These are the ONLY quantitative claims permitted in any channel. Every retired variant found live in the audit is listed as forbidden. A new number requires a source and a date appended to this registry.",
+    "CL-1": {
+      "dimension": "speed",
+      "canonical": "under 30 minutes",
+      "forbidden": ["within seconds", "in seconds", "just minutes", "in minutes (unqualified)", "5-15 minutes", "speed of light"]
+    },
+    "CL-2": {
+      "dimension": "traditional baseline",
+      "canonical": "6-8 weeks",
+      "forbidden": ["4-6 weeks", "2-3 months", "months (unqualified)"]
+    },
+    "CL-3": {
+      "dimension": "accuracy",
+      "canonical": "87% proven accuracy against secondary research",
+      "forbidden": ["87-94% accuracy", "10x the precision"]
+    },
+    "CL-4": {
+      "dimension": "data scale",
+      "canonical": "5B+ datapoints",
+      "forbidden": ["5M-10B datapoints", "1000x more data", "2.5 quintillion bytes", "millions of data points"]
+    },
+    "CL-5": {
+      "dimension": "client proof",
+      "canonical": "30+ brands, including Godrej, Britannia, Foxtale and Mosaic Wellness",
+      "forbidden": ["35+ global brands (unsourced as canonical current figure)"],
+      "spelling_lock": ["Mosaic Wellness (never 'Mosiac')"]
+    },
+    "CL-6": {
+      "dimension": "new claims",
+      "rule": "No quantitative claim outside CL-1..CL-5 may appear in generated content. New claims enter only via a registry update with source and date."
+    }
+  },
+  "voice": {
+    "reference": "The founder's press voice, systematised: sharp, specific, contrarian, metaphor-led but disciplined.",
+    "VX-1": { "rule": "Short declarative sentences. Average sentence length <= 18 words; no sentence over 28 words." },
+    "VX-2": { "rule": "Maximum one metaphor or analogy per piece." },
+    "VX-3": {
+      "rule": "Specifics over superlatives. Banned lexicon in all channels.",
+      "banned": ["unlock", "embrace", "game-changing", "game changing", "revolutionize", "revolutionise", "cutting-edge", "cutting edge", "dive into", "gold mine", "goldmine", "unparalleled", "meet the future", "embrace the future", "supercharge", "next-level"]
+    },
+    "VX-4": { "rule": "No emojis in any channel." },
+    "VX-5": { "rule": "No hashtags in any channel except LinkedIn, where a maximum of 2 topic tags is permitted." },
+    "VX-6": { "rule": "Punctuation hygiene: no space before punctuation; maximum one exclamation mark per piece (prefer zero); no ellipsis as suspense." }
+  },
+  "cta": {
+    "CH-CTA": {
+      "rule": "Exactly two CTAs exist. Primary: 'Book a demo' (cal.com link). Secondary: 'Download the report'. No other CTA string may appear.",
+      "allowed": ["Book a demo", "Download the report"],
+      "forbidden": ["Book a Free Demo", "Get in touch", "Click, discover, strategize", "Join the #ResearchRevolution", "Learn more"]
+    }
+  },
+  "channels": {
+    "CH-LI": {
+      "channel": "linkedin_post",
+      "rule": "Insight-first: open with a specific finding or a sharp market observation, never with the company. 80-150 words. Close with one CTA from CH-CTA. Max 2 hashtags. No emojis.",
+      "structure": ["hook: finding or contrarian observation (1-2 sentences)", "bridge: what this means for insights/brand teams", "proof: claims from registry only", "one CTA", "0-2 hashtags"]
+    },
+    "CH-EM": {
+      "channel": "email",
+      "rule": "One idea, one CTA, under 120 words in the body. Subject line of 7 words or fewer, no clickbait. Descriptor ID-2 verbatim if the company is introduced.",
+      "structure": ["subject <= 7 words", "1-sentence relevance hook tied to recipient's category", "the one idea, with registry claims only", "one CTA from CH-CTA", "sign-off"]
+    },
+    "CH-JD": {
+      "channel": "job_description",
+      "rule": "Open with descriptor ID-2 verbatim as the mission line. Responsibilities are outcomes ('own X, ship Y, report Z'), not activities. End with a 'How we work' block. Same voice rules as all channels.",
+      "structure": ["role title + location", "mission line: ID-2 verbatim + one proof sentence from registry", "'What you'll own': 3-5 outcome bullets", "'How we work': 2-3 sentences, honest register"]
+    },
+    "CH-WEB": {
+      "channel": "website_copy",
+      "rule": "Credible B2B register. Hero line stays 'Consumer Research in Minutes' pending a separate hero review; all supporting copy uses registry claims only. CTAs per CH-CTA.",
+      "structure": ["headline: benefit, <= 8 words", "subhead: descriptor or registry-backed proof", "one CTA"]
+    }
+  }
+}

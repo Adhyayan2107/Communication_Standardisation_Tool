@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f1f3f0;
+  --panel: #ffffff;
+  --ink: #16211c;
+  --muted: #5c6660;
+  --viridian: #0d5c48;
+  --viridian-deep: #073b2e;
+  --violation: #b3261e;
+  --warn: #8a6a00;
+  --mint: #dff0e9;
+  --border: #dde2dc;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-viridian: var(--viridian);
+  --color-viridian-deep: var(--viridian-deep);
+  --color-violation: var(--violation);
+  --color-warn: var(--warn);
+  --color-mint: var(--mint);
+  --color-line: var(--border);
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-plex-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--viridian);
+  outline-offset: 2px;
+}
+
+/* Inline violation marks. The rule-ID chip is ::after content so it never
+   enters contentEditable's innerText. */
+mark.vio {
+  background: #fbe4e2;
+  color: #8f1d16;
+  border-bottom: 2px solid var(--violation);
+  border-radius: 2px;
+  padding: 0 1px;
+  animation: vio-pulse 0.6s ease-out 1;
+}
+mark.vio::after {
+  content: attr(data-rule);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 9.5px;
+  background: var(--violation);
+  color: #fff;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin-left: 3px;
+  vertical-align: super;
+}
+@keyframes vio-pulse {
+  from {
+    background: #f3b7b1;
+  }
+  to {
+    background: #fbe4e2;
+  }
+}
+
+.draft-editor:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+}
+
+/* The number-soup specimens drift slightly — CSS only, per the landing spec. */
+@keyframes drift {
+  from {
+    transform: translateY(-3px);
+  }
+  to {
+    transform: translateY(4px);
+  }
+}
+.drift {
+  animation: drift 5s ease-in-out infinite alternate;
+}
+.drift-1 {
+  animation-duration: 6.5s;
+  animation-delay: -1.2s;
+}
+.drift-2 {
+  animation-duration: 5.6s;
+  animation-delay: -2.4s;
+}
+.drift-3 {
+  animation-duration: 7.2s;
+  animation-delay: -0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  mark.vio,
+  .drift {
+    animation: none;
+  }
+}

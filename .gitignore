@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env.local
+.env*.local
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Agent tooling (not part of the project)
+.claude/
+.impeccable/
