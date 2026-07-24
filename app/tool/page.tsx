@@ -30,20 +30,14 @@ const CHANNEL_LABELS: Record<ChannelKey, string> = {
   web: "Website copy",
 };
 
-const SAMPLE_BRIEFS: Record<ChannelKey, string> = {
-  linkedin:
-    "Rewrite our old 'gold mine' LinkedIn post to the standard: the point is that brand teams wait weeks for research while decisions happen in days, and Consuma closes that gap.",
-  email:
-    "Cold outbound to a Consumer Insights Manager at a mid-size beauty/skincare brand. Goal: get a demo booked. They currently run 6-8 week agency studies.",
-  jd: "JD intro + responsibilities for a Growth Associate in the Founder's Office, Bengaluru. Emphasis on outbound experiments, demo pipeline, and content on the company standard.",
-  web: "Homepage feature block introducing the Rapid Research Platform for consumer brand teams.",
-};
+const BRIEF_PLACEHOLDER =
+  "Describe the piece you want — the audience, the angle, and the point to make. The draft is generated from the constitution, so you never supply the claims.";
 
 const words = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
 
 export default function ToolPage() {
   const [channel, setChannel] = useState<ChannelKey>("linkedin");
-  const [brief, setBrief] = useState(SAMPLE_BRIEFS.linkedin);
+  const [brief, setBrief] = useState("");
   const [draft, setDraft] = useState("");
   const [report, setReport] = useState<CheckResult[] | null>(null);
   const [audit, setAudit] = useState<Record<string, AuditVerdict> | null>(null);
@@ -84,7 +78,6 @@ export default function ToolPage() {
     if (draft.trim() && !window.confirm("Switching channels clears the current draft. Continue?"))
       return;
     setChannel(k);
-    setBrief(SAMPLE_BRIEFS[k]);
     setDraft("");
     setReport(null);
     setAudit(null);
@@ -230,13 +223,14 @@ export default function ToolPage() {
             id="brief"
             value={brief}
             onChange={(e) => setBrief(e.target.value)}
+            placeholder={BRIEF_PLACEHOLDER}
             rows={3}
-            className="min-h-[84px] w-full resize-y rounded-lg border border-line bg-panel p-3 text-sm"
+            className="min-h-[84px] w-full resize-y rounded-lg border border-line bg-panel p-3 text-sm placeholder:text-muted"
           />
           <div className="flex flex-wrap items-center gap-2.5">
             <button
               onClick={generate}
-              disabled={!!busy}
+              disabled={!!busy || !brief.trim()}
               className="rounded-lg bg-viridian px-4.5 py-2.5 text-[13.5px] font-semibold text-white transition-opacity hover:bg-viridian-deep disabled:opacity-45"
             >
               Generate to standard
