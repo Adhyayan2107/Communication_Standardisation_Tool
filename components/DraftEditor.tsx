@@ -56,6 +56,16 @@ export function DraftEditor({
       aria-multiline="true"
       aria-label="Draft — edit or paste copy, then click away to re-lint"
       data-placeholder="No draft yet. Generate from a brief — or paste existing copy here to audit it against the standard."
+      onPaste={(e) => {
+        // Insert clipboard as plain text so pasted formatting never enters the draft.
+        e.preventDefault();
+        const text = e.clipboardData.getData("text/plain");
+        const sel = window.getSelection();
+        if (!sel || !sel.rangeCount) return;
+        sel.deleteFromDocument();
+        sel.getRangeAt(0).insertNode(document.createTextNode(text));
+        sel.collapseToEnd();
+      }}
       onBlur={(e) => onCommit((e.target as HTMLElement).innerText)}
       className="draft-editor min-h-[120px] whitespace-pre-wrap p-4.5 text-[14.5px] leading-[1.65] outline-none"
     >

@@ -296,7 +296,9 @@ export default function ToolPage() {
           <h2 className="px-4 pt-3.5 pb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted">
             Draft {report && "· violations marked inline"}
           </h2>
-          <DraftEditor draft={draft} report={report} onCommit={commitDraft} />
+          {/* key forces a clean remount on every re-lint so a paste can't leave
+              a duplicate copy behind in the contentEditable DOM */}
+          <DraftEditor key={lintKey} draft={draft} report={report} onCommit={commitDraft} />
           {!draft && (
             <div className="px-4 pb-4">
               <button
